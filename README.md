@@ -1,16 +1,17 @@
 # Google Translate API
 A [Node.JS](https://nodejs.org) library to consume Google Translate for free.
 
-[![GitHub release](https://img.shields.io/github/release/iamtraction/google-translate.svg?style=flat)](https://github.com/iamtraction/google-translate/releases)
-[![Dependencies](https://david-dm.org/iamtraction/google-translate.svg)](https://david-dm.org/iamtraction/google-translate)
-[![Known Vulnerabilities](https://snyk.io/test/github/iamtraction/google-translate/badge.svg?targetFile=package.json)](https://snyk.io/test/github/iamtraction/google-translate?targetFile=package.json)
-[![license](https://img.shields.io/github/license/iamtraction/google-translate.svg)](LICENSE)
+[![GitHub release](https://img.shields.io/github/release/flowkscai/google-translate.svg?style=flat)](https://github.com/flowkscai/google-translate/releases)
+[![Dependencies](https://david-dm.org/flowkscai/google-translate.svg)](https://david-dm.org/flowkscai/google-translate)
+[![Known Vulnerabilities](https://snyk.io/test/github/flowkscai/google-translate/badge.svg?targetFile=package.json)](https://snyk.io/test/github/flowkscai/google-translate?targetFile=package.json)
+[![license](https://img.shields.io/github/license/flowkscai/google-translate.svg)](LICENSE)
 
 ### Feature Highlights
 * Automatically detect source language
 * Automatic spelling corrections
 * Automatic language correction
 * Fast and reliable
+* Support proxy
 
 ## Table of Contents
 * [Installation](#installation)
@@ -21,16 +22,16 @@ A [Node.JS](https://nodejs.org) library to consume Google Translate for free.
 ## Installation
 ```bash
 # Stable version, from npm repository
-npm install --save @iamtraction/google-translate
+npm install --save @flowkscai/google-translate
 
 # Latest version, from GitHub repository
-npm install --save iamtraction/google-translate
+npm install --save flowkscai/google-translate
 ```
 
 ## Usage
 ```js
 // If you've installed from npm, do:
-const translate = require('@iamtraction/google-translate');
+const translate = require('@flowkscai/google-translate');
 
 // If you've installed from GitHub, do:
 const translate = require('google-translate');
@@ -47,6 +48,7 @@ translate(text, options).then(console.log).catch(console.error);
 | `options.from` | `String` | Yes | `'auto'` | The language name/ISO 639-1 code to translate from. If none is given, it will auto detect the source language. |
 | `options.to` | `String` | Yes | `'en'` | The language name/ISO 639-1 code to translate to. If none is given, it will translate to English. |
 | `options.raw` | `Boolean` | Yes | `false` | If `true`, it will return the raw output that was received from Google Translate. |
+| `options.proxy` | `String` | Yes | - | The proxy uri used by ProxyAgent. |
 
 #### Returns: `Promise<Object>`
 **Response Object:**
@@ -100,6 +102,7 @@ translate('Thank you', { from: 'en', to: 'fr' }).then(res => {
 ```
 
 ## Extras
-If you liked this project, please give it a ⭐ in [**GitHub**](https://github.com/iamtraction/google-translate).
+If you liked this project, please give it a ⭐ in [**GitHub**](https://github.com/flowkscai/google-translate).
 
-> Credits to [matheuss](https://github.com/matheuss) for writing the original version of this library. I rewrote this, with improvements and without using many external libraries, as his library was not actively developed and had vulnerabilities.
+> Credits to [matheuss](https://github.com/matheuss) for writing the original version of this library.  
+> Credits to [Sankarsan Kampa (iamtraction)](https://github.com/iamtraction) for rewrote this, with improvements and without using many external libraries, as original library was not actively developed and had vulnerabilities.

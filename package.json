@@ -1,5 +1,5 @@
 {
-    "name": "@iamtraction/google-translate",
+    "name": "@flowkscai/google-translate",
     "version": "2.0.1",
     "description": "A Node.JS library to consume Google Translate API for free.",
     "main": "src/index.js",
@@ -9,7 +9,7 @@
         "test": "npm run test:lint",
         "start": "node ."
     },
-    "repository": "https://github.com/iamtraction/google-translate",
+    "repository": "https://github.com/flowkscai/google-translate",
     "keywords": [
         "google translate api",
         "google translate",
@@ -20,6 +20,10 @@
         "api"
     ],
     "author": "Sankarsan Kampa (iamtraction)",
+    "contributors": [
+        "Sankarsan Kampa (iamtraction)",
+        "flowkscai"
+    ],
     "license": "MIT",
     "engines": {
         "node": ">=16.0.0"
