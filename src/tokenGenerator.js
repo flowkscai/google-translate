@@ -65,11 +65,11 @@ const window = {
 };
 
 // eslint-disable-next-line require-jsdoc
-async function updateTKK() {
+async function updateTKK(options) {
     let now = Math.floor(Date.now() / 3600000);
 
     if (Number(window.TKK.split(".")[0]) !== now) {
-        const response = await request("https://translate.google.com");
+        const response = await request("https://translate.google.com", options);
         const body = await response.body.text();
 
         // code will extract something like tkk:'1232135.131231321312', we need only value
@@ -86,9 +86,9 @@ async function updateTKK() {
 }
 
 // eslint-disable-next-line require-jsdoc
-async function generate(text) {
+async function generate(text, options) {
     try {
-        await updateTKK();
+        await updateTKK(options);
 
         let tk = zr(text);
         tk = tk.replace("&tk=", "");

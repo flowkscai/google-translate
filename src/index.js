@@ -1,5 +1,5 @@
 const querystring = require("querystring");
-const { request } = require("undici");
+const { request, ProxyAgent } = require("undici");
 
 const languages = require("./languages");
 const tokenGenerator = require("./tokenGenerator");
@@ -36,8 +36,10 @@ async function translate(text, options) {
     options.from = languages.getISOCode(options.from);
     options.to = languages.getISOCode(options.to);
 
+    const dispatcher = options.proxy ? new ProxyAgent(options.proxy) : undefined;
+
     // Generate Google Translate token for the text to be translated.
-    let token = await tokenGenerator.generate(text);
+    let token = await tokenGenerator.generate(text, { dispatcher });
 
     // URL & query string required by Google Translate.
     let baseUrl = "https://translate.google.com/translate_a/single";
@@ -67,6 +69,7 @@ async function translate(text, options) {
         requestOptions = [
             `${baseUrl}?${querystring.stringify(data)}`,
             {
+                dispatcher,
                 method: "POST",
                 body: new URLSearchParams({ q: text }).toString(),
                 headers: {
@@ -76,7 +79,7 @@ async function translate(text, options) {
         ];
     }
     else {
-        requestOptions = [ url ];
+        requestOptions = [ url, { dispatcher } ];
     }
 
     // Request translation from Google Translate.

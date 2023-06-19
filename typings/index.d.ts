@@ -5,6 +5,8 @@ interface TranslateOption {
     to?: string;
     /** If `true`, it will return the raw output that was received from Google Translate. */
     raw?: boolean;
+    /** The proxy uri used by ProxyAgent */
+    proxy?: string;
 }
 
 interface TranslateResponse {
